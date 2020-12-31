@@ -9,6 +9,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.HashMap;
+import java.util.Map;
 
 @RequestScoped
 @Path("login")
@@ -16,16 +18,19 @@ import javax.ws.rs.core.Response;
 @Consumes(MediaType.APPLICATION_JSON)
 public class Login {
 	
-	@Inject private SessionBean sessionBean;
+	@Inject private Scapper sessionBean;
 	
 	@GET
 	public Response login(@QueryParam("username") String username, @QueryParam("password") String password) {
 		try {
-			sessionBean.doLogin(username, password);
+			String token = sessionBean.doLogin(username, password);
+			Map<String, String> bodyMap = new HashMap<>();
+			bodyMap.put("token", token);
+			return Response.ok(bodyMap).build();
 		} catch (Exception e) {
 			e.printStackTrace();
+			return Response.status(Response.Status.UNAUTHORIZED).build();
 		}
-		return Response.ok().build();
 	}
 	
 }
