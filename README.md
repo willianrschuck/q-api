@@ -3,7 +3,7 @@ Api para facilitar o acesso aos dados do Q-Acadêmico de forma programática
 
 ### O problema
 
-O IFSul e possívelmente outros IFs utilizam o sistema Q-Acadêmico para o gerenciamento institucional. O software é antigo e sua interface e funcionalidades são limitadas. Com isso em mente surgiu a ideia de criar uma api que permita extrair os dados do sistema de uma forma simples e assim talvez estimular o desenvolvimento de uma novas aplicações para acessar o Q-Acadêmico.
+O IFSul e possívelmente outros IFs utilizam o sistema Q-Acadêmico para o gerenciamento institucional. O software é antigo e sua interface e funcionalidades são limitadas. Com isso em mente surgiu a ideia de criar uma api que permita extrair os dados do sistema de uma forma simples e assim talvez estimular o desenvolvimento de novas aplicações para acessar o Q-Acadêmico.
 
 <br/>
 
