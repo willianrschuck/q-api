@@ -1,5 +1,7 @@
 package br.edu.ifsul.resources;
 
+import br.edu.ifsul.scrapper.LoginScrapper;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -17,13 +19,13 @@ import java.util.Map;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class Login {
-	
-	@Inject private Scapper sessionBean;
+
+	@Inject private LoginScrapper loginScrapper;
 	
 	@GET
 	public Response login(@QueryParam("username") String username, @QueryParam("password") String password) {
 		try {
-			String token = sessionBean.doLogin(username, password);
+			String token = loginScrapper.doLogin(username, password);
 			Map<String, String> bodyMap = new HashMap<>();
 			bodyMap.put("token", token);
 			return Response.ok(bodyMap).build();

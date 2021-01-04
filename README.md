@@ -18,7 +18,7 @@ Autentica o usuário com o Q-Acadêmico e retorna o token de acesso que identifi
 }
 ```
 
-#### Get Materiais de % GET /api/materiais?token={token}
+#### Get Materiais de aula % GET /api/materiais?token={token}
 
 Utilizando o token informado, realiza a comunicação com o Q-Acadêmico e retorna uma lista com todos os materiais da disciplina
 
@@ -31,4 +31,29 @@ Utilizando o token informado, realiza a comunicação com o Q-Acadêmico e retor
     "data" : "2020-07-09"
   }
 ]
+```
+
+#### Get Horario % GET /api/horario?token={token}&ano={ano}&periodo={periodo}
+
+Utilizando o token informado, realiza a comunicação com o Q-Acadêmico e retorna uma lista com o horário das disciplinas
+
+###### Resposta em caso de sucesso
+```json
+{
+  "segunda": [
+    {
+      "fim": "08:44",
+      "inicio": "08:00",
+      "nome": "Criação de Páginas WEB",
+      "sigla": "CPW"
+    },
+    {
+      "fim": "09:30",
+      "inicio": "08:45",
+      "nome": "Criação de Páginas WEB",
+      "sigla": "CPW"
+    },
+    ...
+  ]
+}
 ```
