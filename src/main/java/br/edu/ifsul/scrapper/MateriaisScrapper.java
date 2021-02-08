@@ -22,7 +22,7 @@ public class MateriaisScrapper {
 
         Connection.Response response = Jsoup.connect(QAcademico.URL_OBTER_MATERIAL_DE_AULA)
                 .method(Connection.Method.POST)
-                .cookie(QAcademico.getSessionCookieName(), token)
+                .cookie(getSessionCookieName(), token)
                 .data("ANO_PERIODO", "2019_1")
                 .execute();
 
@@ -58,6 +58,17 @@ public class MateriaisScrapper {
 
         return materiaisDisciplina;
 
+    }
+
+    private String getSessionCookieName() throws Exception{
+        Connection.Response response = Jsoup.connect(QAcademico.URL_OBTER_CHAVES)
+                .method(Connection.Method.HEAD)
+                .execute();
+
+        return response.cookies().keySet().stream()
+                .filter(s -> s.startsWith(QAcademico.SESSION_COOKIE_PREFIX))
+                .findFirst()
+                .orElseThrow(() -> new Exception("Cannot get session cookie name"));
     }
 
     private boolean isTituloDisciplina(Element linha) {

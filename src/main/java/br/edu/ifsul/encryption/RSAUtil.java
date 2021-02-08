@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.util.LinkedList;
 import java.util.List;
 
-public class RSAUtil {
+public class RSAUtil implements StringEncryptor {
 
 	private final BigInteger expoenteDeEncriptacao;
 	private final BigInteger modulo;
@@ -17,8 +17,9 @@ public class RSAUtil {
 		this.tamanhoDoBloco = 14;
 		
 	}
-	
-	public String encriptarString(String string) {
+
+	@Override
+	public String encrypt(String string) {
 	
 		List<Integer> array = new LinkedList<>(); 
 		

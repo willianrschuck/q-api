@@ -11,6 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,11 +27,8 @@ public class Login {
 	public Response login(@QueryParam("username") String username, @QueryParam("password") String password) {
 		try {
 			String token = loginScrapper.doLogin(username, password);
-			Map<String, String> bodyMap = new HashMap<>();
-			bodyMap.put("token", token);
-			return Response.ok(bodyMap).build();
+			return Response.ok(Collections.singletonMap("token", token)).build();
 		} catch (Exception e) {
-			e.printStackTrace();
 			return Response.status(Response.Status.UNAUTHORIZED).build();
 		}
 	}
